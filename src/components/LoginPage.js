@@ -1,4 +1,6 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {setAuthToken, setPortariaID} from './../actions/appActions'
 
 class LoginPage extends React.Component{
     constructor(props){
@@ -6,27 +8,37 @@ class LoginPage extends React.Component{
 
         this.state = {
             portariaID: '',
-            senha: ''
+            senha: '',
+            err: ''
         }
     }
 
     onSubmit = (e) => {
         //Evita que a página atualize
         e.preventDefault()
-        //Tem que mudar pra uma variável de ambiente
+                
         fetch('https://peaceful-shelf-58074.herokuapp.com/portaria/login', {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': 'http://localhost:1234',
                 'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-                'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, x-auth'
+                'Content-Type': 'application/json'
             },
-            //mode: 'no-cors',
-            body: JSON.stringify(this.state)
-        }).then(response => console.log(response))
-        .catch(error => console.log('Authorization failed : ' + error.message));
+            body: JSON.stringify({
+                portariaID: this.state.portariaID,
+                senha: this.state.senha
+            })
+        }).then(response => {
+            if(response.status === 200){
+                this.state.err = ''
+                this.props.dispatch(setPortariaID(this.state.portariaID))
+                this.props.dispatch(setAuthToken(response.headers.get('x-auth')))
+                this.props.history.push('/')
+            }
+        })
+        .catch(error => {
+            console.log('Authorization failed : ' + error.message)
+            this.setState(() => {err: 'Não foi possível realizar o login, tente novamente!'})
+        })
     }
 
     onPortariaIDChange = (e) => {
@@ -60,9 +72,10 @@ class LoginPage extends React.Component{
                     <br/>
                     <button>Entrar</button>
                 </form>
+                {this.state.err && <p>{this.state.err}</p>}
             </div>
         )
     }
 }
 
-export default LoginPage
+export default connect()(LoginPage)

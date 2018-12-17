@@ -7,3 +7,8 @@ export const setPortariaID = (portariaID = '') => ({
     type: 'SET_PORTARIAID',
     portariaID
 })
+
+export const isAdmin = (isAdmin = false) => ({
+    type: 'IS_ADMIN',
+    isAdmin
+})
