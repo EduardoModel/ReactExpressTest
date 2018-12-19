@@ -13,6 +13,7 @@ const Header = (props) => (
         {props.authToken && 
         <div>
         <NavLink to='/acionamentos' activeClassName='is-active'>Visualizar Acionamentos</NavLink>
+        <NavLink to='/portarias' activeClassName='is-actuve'>Visualizar Portarias</NavLink>
         <button onClick={() => {
             props.dispatch(setAuthToken())
             props.dispatch(setPortariaID())

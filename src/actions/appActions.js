@@ -8,7 +8,7 @@ export const setPortariaID = (portariaID = '') => ({
     portariaID
 })
 
-export const isAdmin = (isAdmin = false) => ({
-    type: 'IS_ADMIN',
-    isAdmin
-})
+// export const isAdmin = (isAdmin = false) => ({
+//     type: 'IS_ADMIN',
+//     isAdmin
+// })

@@ -5,6 +5,7 @@ import AboutPage from './../components/AboutPage'
 import NotFoundPage from './../components/NotFoundPage'
 import LoginPage from './../components/LoginPage'
 import AcionamentoPage from './../components/AcionamentosPage'
+import PortariaPage from '../components/PortariasPage'
 
 const AppRouter = (props) => (
     <BrowserRouter>
@@ -14,6 +15,7 @@ const AppRouter = (props) => (
                 <Route path='/about' component={AboutPage}/>
                 <Route path='/login' component={LoginPage}/>
                 <Route path='/acionamentos' component={AcionamentoPage}/>
+                <Route path='/portarias' component={PortariaPage}/>
                 <Route component={NotFoundPage}/>
             </Switch>
         </div>

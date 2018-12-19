@@ -1,14 +1,12 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
-import Filtro from './Filtro'
 
-const AcionamentoPage = (props) => (
+const PortariaPage = () => (
     <div>
-        <p>Acionamentos</p>
+        <p>Portarias</p>
         <NavLink to='/' activeClassName="is-active" exact={true}>Voltar para a pagina inicial</NavLink>
-        <Filtro/>
-    </div>
+    </div>   
 )
 
 const mapStateToProps = state => {
@@ -18,4 +16,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(AcionamentoPage)
+export default connect(mapStateToProps)(PortariaPage)

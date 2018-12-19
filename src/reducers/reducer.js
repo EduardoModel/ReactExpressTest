@@ -1,7 +1,7 @@
 const appReducerState = {
     authToken: '', 
-    portariaID: '',
-    isAdmin: false
+    portariaID: ''
+    // isAdmin: false
 }
 
 export default (state = appReducerState, action) => {
@@ -16,11 +16,11 @@ export default (state = appReducerState, action) => {
                 ...state,
                 portariaID: action.portariaID
             }
-        case 'IS_ADMIN':
-            return{
-                ...state,
-                isAdmin: action.isAdmin
-            }
+        // case 'IS_ADMIN':
+        //     return{
+        //         ...state,
+        //         isAdmin: action.isAdmin
+        //     }
         default:
             return state
     }
