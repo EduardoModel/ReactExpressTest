@@ -46,8 +46,24 @@ class Filtro extends React.Component {
         if(this.state.bairroSelected && !this.state.bairro){
             err += 'Por favor entre com um nome de um bairro\n'
         }
-
         this.setState(() => ({err}))
+        this.sendUp(err)
+    }
+
+    sendUp = (err) => {
+        if(err === ''){
+            let info = {}
+            if(this.state.estadoSelected){
+                info = {...info, estado: this.state.estado}
+            }
+            if(this.state.cidadeSelected){
+                info = {...info, cidade: this.state.cidade}
+            }
+            if(this.state.bairroSelected){
+                info = {...info, bairro: this.state.bairro}
+            }
+            this.props.onSubmit(info)
+        }
     }
 
     render(){

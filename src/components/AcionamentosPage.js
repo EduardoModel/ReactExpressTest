@@ -7,7 +7,11 @@ const AcionamentoPage = (props) => (
     <div>
         <p>Acionamentos</p>
         <NavLink to='/' activeClassName="is-active" exact={true}>Voltar para a pagina inicial</NavLink>
-        <Filtro/>
+        <Filtro
+            onSubmit={(info) => {
+                console.log('A informação do filtro:', info)
+            }}
+        />
     </div>
 )
 
