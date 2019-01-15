@@ -3,14 +3,17 @@ import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Filtro from './Filtro';
 import Portaria from './Portaria';
-
+ 
 class PortariaPage extends React.Component{
+
+
     constructor(props){
         super(props)
 
         this.state = {
-            portarias: []
+            portarias: null
         }
+        this.buscaPortarias = this.buscaPortarias.bind(this)
     }
 
     buscaPortarias = (info) => {
@@ -23,13 +26,12 @@ class PortariaPage extends React.Component{
             'x-auth': this.props.authToken
         },
             body: JSON.stringify(info)
-        }).then(response => {
+        }).then((response) => {
             if(response.status === 200){
                 response.text().then((res) => {
-                    console.log('vai setar as portarias?')
                     const portarias = JSON.parse(res)
-                    console.log(portarias)
-                    this.setState(()=> {portarias}) 
+                    portarias.sort((a,b) => a.portariaID-b.portariaID)
+                    this.setState(()=> ({portarias}))
                 })
             }
         })
