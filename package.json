@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "serve --single ./prod",
+    "start": "serve --single ./dist",
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html --out-dir prod"
+    "build": "parcel build src/index.html"
   },
   "repository": {
     "type": "git",
