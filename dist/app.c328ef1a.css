@@ -58,7 +58,7 @@
 .Login-page {
   width: 100%;
   text-align: center;
-  margin-top: 15rem;
+  margin-top: 5rem;
   position: relative;
 }
 
@@ -79,7 +79,16 @@
 .Login-page__logo {
   height: 10.5rem;
   width: 13rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.6rem;
+  margin-left: 1rem;
+  margin-right: 1.6rem;
+}
+
+.Login-page__marca {
+  height: 10rem;
+  width: 26rem;
+  margin-top: 12rem;
+  margin-bottom: 1.6rem;
 }.Filtro {
   padding: 0;
 }

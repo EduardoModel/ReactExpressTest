@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {setAuthToken, setPortariaID} from './../actions/appActions'
 import '../styles/components/_login-page.scss'
 import logo from '../img/Logo.png'
+import marca from '../img/Marca.png'
 
 
 class LoginPage extends React.Component{
@@ -65,6 +66,7 @@ class LoginPage extends React.Component{
         return (
             <div className='Login-page'>
             <img className='Login-page__logo' src={logo} />
+            <img className='Login-page__marca' src={marca} />
                 <form onSubmit={this.onSubmit}>
                     <input 
                         className='Login-page__input'

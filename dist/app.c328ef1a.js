@@ -30833,7 +30833,9 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/LoginPage.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"img/Marca.png":[function(require,module,exports) {
+module.exports = "/Marca.feaf77c1.png";
+},{}],"components/LoginPage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30850,6 +30852,8 @@ var _appActions = require("./../actions/appActions");
 require("../styles/components/_login-page.scss");
 
 var _Logo = _interopRequireDefault(require("../img/Logo.png"));
+
+var _Marca = _interopRequireDefault(require("../img/Marca.png"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30963,6 +30967,9 @@ function (_React$Component) {
       }, _react.default.createElement("img", {
         className: "Login-page__logo",
         src: _Logo.default
+      }), _react.default.createElement("img", {
+        className: "Login-page__marca",
+        src: _Marca.default
       }), _react.default.createElement("form", {
         onSubmit: this.onSubmit
       }, _react.default.createElement("input", {
@@ -30990,7 +30997,7 @@ function (_React$Component) {
 var _default = (0, _reactRedux.connect)()(LoginPage);
 
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","./../actions/appActions":"actions/appActions.js","../styles/components/_login-page.scss":"styles/components/_login-page.scss","../img/Logo.png":"img/Logo.png"}],"styles/components/_filtro.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","./../actions/appActions":"actions/appActions.js","../styles/components/_login-page.scss":"styles/components/_login-page.scss","../img/Logo.png":"img/Logo.png","../img/Marca.png":"img/Marca.png"}],"styles/components/_filtro.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -31576,7 +31583,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37689" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34773" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
