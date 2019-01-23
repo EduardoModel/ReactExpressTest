@@ -1,5 +1,5 @@
 import React from 'react'
-import { throws } from 'assert';
+import '../styles/components/_filtro.scss'
 
 class Filtro extends React.Component {
     constructor(props){
@@ -77,11 +77,8 @@ class Filtro extends React.Component {
                 }}>
                 </input>
 
-                {/* <input type='text'
-                placeholder='Estado'
+                <select className='Filtro__text-input' 
                 onChange={this.onEstadoChange}>
-                </input> */}
-                <select onChange={this.onEstadoChange}>
                     <option></option>
                     <option>SP</option>
                     <option>RS</option>
@@ -95,7 +92,8 @@ class Filtro extends React.Component {
                 }}>
                 </input>
 
-                <input type='text'
+                <input className='Filtro__text-input' 
+                type='text'
                 placeholder='Cidade'
                 onChange={this.onCidadeChange}>
                 </input>
@@ -107,7 +105,8 @@ class Filtro extends React.Component {
                 }}>
                 </input>
 
-                <input type='text'
+                <input className='Filtro__text-input'
+                type='text'
                 placeholder='Bairro'
                 onChange={this.onBairroChange}>
                 </input>
@@ -115,7 +114,7 @@ class Filtro extends React.Component {
                 <br/>
 
                 <button
-                // onClick={this.onButtonClick}
+                className='Filtro__button'
                 >
                 Buscar
                 </button>

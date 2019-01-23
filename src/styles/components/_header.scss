@@ -1,0 +1,42 @@
+.Header{
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 13.75rem; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 0.3rem;
+    background: lightblue;
+   // margin-right: 42rem;
+}
+
+.Header__title{
+    font-size: 2.5rem;
+    color: black;
+    margin: 0;
+}
+
+.Header__portariaLogada{
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.Header__options{
+    text-decoration: none;
+    display: table;
+    padding-right: 1rem;
+    color: black;
+    list-style: none;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    margin-left: 0.3rem;
+}
+
+.Header__img{
+    margin-left: 0.3rem;
+    height: 10.5rem;
+    width: 13rem;
+    background-color: lightblue;
+}

@@ -1,0 +1,143 @@
+.Header {
+  height: 100%;
+  /* Full-height: remove this if you want "auto" height */
+  width: 13.75rem;
+  /* Set the width of the sidebar */
+  position: fixed;
+  /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1;
+  /* Stay on top */
+  top: 0;
+  /* Stay at the top */
+  left: 0;
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 0.3rem;
+  background: lightblue;
+}
+
+.Header__title {
+  font-size: 2.5rem;
+  color: black;
+  margin: 0;
+}
+
+.Header__portariaLogada {
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+.Header__options {
+  text-decoration: none;
+  display: table;
+  padding-right: 1rem;
+  color: black;
+  list-style: none;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  margin-left: 0.3rem;
+}
+
+.Header__img {
+  margin-left: 0.3rem;
+  height: 10.5rem;
+  width: 13rem;
+  background-color: lightblue;
+}.Dashboard-page {
+  margin-left: 220px;
+  padding: 0px 10px;
+}.About-page {
+  margin-left: 220px;
+  padding: 0px 10px;
+}@viewport {
+  width: device-width;
+  height: device-heidht;
+  zoom: 1;
+}
+.Login-page {
+  width: 100%;
+  text-align: center;
+  margin-top: 15rem;
+  position: relative;
+}
+
+.Login-page__input {
+  block-size: 1.6rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.Login-page__button {
+  position: relative;
+  margin-left: 11.1rem;
+  font-size: 1rem;
+  height: 1.8rem;
+  width: 3.8rem;
+}
+
+.Login-page__logo {
+  height: 10.5rem;
+  width: 13rem;
+  margin-bottom: 3rem;
+}.Filtro {
+  padding: 0;
+}
+
+.Filtro__text-input {
+  margin-top: 1.2rem;
+  margin-right: 2rem;
+  font-size: 1rem;
+}
+
+.Filtro__button {
+  font-size: 1rem;
+  margin-left: 30.8rem;
+  margin-top: 0.8rem;
+}.Portaria__p-id {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.Portaria__p-cidade {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 7rem;
+}
+
+.Portaria__p-endereco {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 12rem;
+}.Portaria-page {
+  margin-left: 220px;
+  padding: 0px 10px;
+}
+
+.Portaria-page__lista {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.Portaria-page__navlink {
+  font-size: 1.2rem;
+  color: black;
+  text-decoration: none;
+}
+
+.Portaria-page__p-ID {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.Portaria-page__p-cidade {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 3.7rem;
+}
+
+.Portaria-page__p-endereco {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 13.55rem;
+}

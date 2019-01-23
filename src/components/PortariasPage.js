@@ -3,6 +3,8 @@ import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Filtro from './Filtro';
 import Portaria from './Portaria';
+import '../styles/components/_portaria-page.scss'
+import Header from './Header'
  
 class PortariaPage extends React.Component{
 
@@ -43,15 +45,26 @@ class PortariaPage extends React.Component{
     render(){
         return (
             <div>
-                <p>Portarias</p>
-                <NavLink to='/' activeClassName="is-active" exact={true}>Voltar para a pagina inicial</NavLink>
-                <Filtro onSubmit={this.buscaPortarias} />
-                {
-                    this.state.portarias && this.state.portarias.map((portaria) => {
-                        return <Portaria key={parseInt(portaria.portariaID)} portaria={portaria}/>
-                    })
-                }
-            </div>   
+                <Header />
+                <div className='Portaria-page'>
+                    <h1>Visualizar Portarias</h1>
+                    <NavLink className='Portaria-page__navlink' to='/dashboard' activeClassName="is-active" exact={true}>Voltar para a pagina inicial</NavLink>
+                    <Filtro onSubmit={this.buscaPortarias} />
+                    {
+                        this.state.portarias && 
+                        <div className='Portaria-page__lista'>
+                        <p className='Portaria-page__p-ID'><b>PortariaID</b></p>
+                        <p className='Portaria-page__p-cidade'><b>Cidade</b></p>
+                        <p className='Portaria-page__p-endereco'><b>Endereço</b></p>
+                        </div>
+                    }
+                    {
+                        this.state.portarias && this.state.portarias.map((portaria) => {
+                            return <Portaria key={parseInt(portaria.portariaID)} portaria={portaria}/>
+                        })
+                    }
+                </div>
+            </div>
         )
     }
 } 

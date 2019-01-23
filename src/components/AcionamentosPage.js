@@ -6,7 +6,7 @@ import Filtro from './Filtro'
 const AcionamentoPage = (props) => (
     <div>
         <p>Acionamentos</p>
-        <NavLink to='/' activeClassName="is-active" exact={true}>Voltar para a pagina inicial</NavLink>
+        <NavLink to='/dashboard' activeClassName="is-active" exact={true}>Voltar para a pagina inicial</NavLink>
         <Filtro
             onSubmit={(info) => {
                 console.log('A informação do filtro:', info)

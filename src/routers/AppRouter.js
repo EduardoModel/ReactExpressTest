@@ -11,9 +11,9 @@ const AppRouter = (props) => (
     <BrowserRouter>
         <div>
             <Switch>
-                <Route path='/' component={DashboardPage} exact={true}/>
+                <Route path='/' component={LoginPage} exact={true}/>
                 <Route path='/about' component={AboutPage}/>
-                <Route path='/login' component={LoginPage}/>
+                <Route path='/dashboard'  component={DashboardPage}/>
                 <Route path='/acionamentos' component={AcionamentoPage}/>
                 <Route path='/portarias' component={PortariaPage}/>
                 <Route component={NotFoundPage}/>

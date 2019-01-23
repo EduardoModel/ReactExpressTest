@@ -1,11 +1,12 @@
 import React from 'react'
+import '../styles/components/_portaria.scss'
 
 
 const Portaria = (props) => (
     <div>
-        <p><b>PortariaID:</b> {props.portaria.portariaID}</p>
-        <p><b>Cidade:</b> {props.portaria.cidade}, {props.portaria.estado}</p>
-        <p><b>Endereço:</b> {props.portaria.rua} {props.portaria.numero}, {props.portaria.bairro}</p>
+        <p className='Portaria__p-id'>{props.portaria.portariaID}</p>
+        <p className='Portaria__p-cidade'>{props.portaria.cidade}, {props.portaria.estado}</p>
+        <p className='Portaria__p-endereco'>{props.portaria.rua} {props.portaria.numero}, {props.portaria.bairro}</p>
 
     </div>
 )

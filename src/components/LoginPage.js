@@ -1,10 +1,18 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {setAuthToken, setPortariaID} from './../actions/appActions'
+import '../styles/components/_login-page.scss'
+import logo from '../img/Logo.png'
+
 
 class LoginPage extends React.Component{
     constructor(props){
         super(props)
+        if(localStorage.getItem("authToken") !== null && localStorage.getItem("portariaID") !== null){
+            this.props.dispatch(setPortariaID(localStorage.getItem("portariaID")))
+            this.props.dispatch(setAuthToken(localStorage.getItem("authToken")))
+            this.props.history.push('/dashboard')
+        }
 
         this.state = {
             portariaID: '',
@@ -31,8 +39,10 @@ class LoginPage extends React.Component{
             if(response.status === 200){
                 this.state.err = ''
                 this.props.dispatch(setPortariaID(this.state.portariaID))
+                localStorage.setItem('portariaID', this.state.portariaID)
                 this.props.dispatch(setAuthToken(response.headers.get('x-auth')))
-                this.props.history.push('/')
+                localStorage.setItem('authToken', response.headers.get('x-auth'))
+                this.props.history.push('/dashboard')
             }
         })
         .catch(error => {
@@ -53,9 +63,11 @@ class LoginPage extends React.Component{
 
     render(){
         return (
-            <div>
+            <div className='Login-page'>
+            <img className='Login-page__logo' src={logo} />
                 <form onSubmit={this.onSubmit}>
                     <input 
+                        className='Login-page__input'
                         type='text'
                         placeholder="PortariaID"
                         autoFocus
@@ -64,13 +76,14 @@ class LoginPage extends React.Component{
                     />
                     <br/>
                     <input 
+                        className='Login-page__input'
                         type='password'
                         placeholder="Senha"
                         required
                         onChange={this.onPasswordChange}
                     />
                     <br/>
-                    <button>Entrar</button>
+                    <button className='Login-page__button'>Login</button>
                 </form>
                 {this.state.err && <p>{this.state.err}</p>}
             </div>
