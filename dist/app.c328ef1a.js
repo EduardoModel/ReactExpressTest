@@ -30723,6 +30723,7 @@ var Header = function Header(props) {
     to: "/portarias",
     activeClassName: "is-actuve"
   }, "Visualizar Portarias"), _react.default.createElement("button", {
+    className: "Header__button",
     onClick: function onClick() {
       props.dispatch((0, _appActions.setAuthToken)());
       props.dispatch((0, _appActions.setPortariaID)());
@@ -30799,7 +30800,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var DashboardPage = function DashboardPage() {
   return _react.default.createElement("div", null, _react.default.createElement(_Header.default, null), _react.default.createElement("div", {
     className: "About-page"
-  }, _react.default.createElement("h1", null, "Sobre a aplica\xE7\xE3o"), _react.default.createElement("p", null, "Aplica\xE7\xE3o desenvolvida pela empresa Olho na Rua")));
+  }, _react.default.createElement("h1", null, "Sobre a aplica\xE7\xE3o"), _react.default.createElement("p", null, "Aplica\xE7\xE3o desenvolvida pela empresa Olho na Rua"), _react.default.createElement("h3", null, "Grupo"), _react.default.createElement("p", null, "Milena Marques"), _react.default.createElement("p", null, "Pedro Fairbanks"), _react.default.createElement("p", null, "Felipe Marques"), _react.default.createElement("p", null, "Eduardo Model"), _react.default.createElement("p", null, "Italo Nolasco"), _react.default.createElement("p", null, "Matheus Gelsdorf"), _react.default.createElement("p", null, "Guilherme Wollmann"), _react.default.createElement("p", {
+    className: "About-page__developer"
+  }, "Developed by Eduardo Model"), _react.default.createElement("div", {
+    align: "right"
+  }, _react.default.createElement("a", {
+    className: "About-page__link",
+    href: "https://github.com/EduardoModel"
+  }, "GitHub"))));
 };
 
 var _default = DashboardPage;
@@ -31051,11 +31059,19 @@ function (_React$Component) {
     _this.onEstadoChange = function (e) {
       var estado = e.target.value;
 
-      _this.setState(function () {
-        return {
-          estado: estado
-        };
-      });
+      if (estado !== 'Estado') {
+        _this.setState(function () {
+          return {
+            estado: estado
+          };
+        });
+      } else {
+        _this.setState(function () {
+          return {
+            estado: ''
+          };
+        });
+      }
     };
 
     _this.onCidadeChange = function (e) {
@@ -31076,6 +31092,36 @@ function (_React$Component) {
           bairro: bairro
         };
       });
+    };
+
+    _this.onEventoChange = function (e) {
+      var evento = e.target.value;
+
+      if (evento !== 'Eventos') {
+        _this.setState(function () {
+          return {
+            evento: evento
+          };
+        });
+      }
+    };
+
+    _this.onPortariaIDChange = function (e) {
+      var portariaID = e.target.value;
+
+      if (portariaID.length <= 3) {
+        _this.setState(function () {
+          return {
+            portariaID: portariaID
+          };
+        });
+      } else {
+        _this.setState(function () {
+          return {
+            portariaID: ''
+          };
+        });
+      }
     };
 
     _this.onFiltroSubmit = function (e) {
@@ -31140,6 +31186,10 @@ function (_React$Component) {
       cidade: '',
       bairroSelected: false,
       bairro: '',
+      eventoSelected: false,
+      evento: '',
+      portariaIDSelected: false,
+      portariaID: '',
       err: ''
     };
     return _this;
@@ -31166,7 +31216,7 @@ function (_React$Component) {
       }), _react.default.createElement("select", {
         className: "Filtro__text-input",
         onChange: this.onEstadoChange
-      }, _react.default.createElement("option", null), _react.default.createElement("option", null, "SP"), _react.default.createElement("option", null, "RS")), _react.default.createElement("input", {
+      }, _react.default.createElement("option", null, "Estado"), _react.default.createElement("option", null, "SP"), _react.default.createElement("option", null, "RS")), _react.default.createElement("input", {
         type: "checkbox",
         onChange: function onChange(e) {
           var cidadeSelected = e.target.checked;
@@ -31198,6 +31248,35 @@ function (_React$Component) {
         type: "text",
         placeholder: "Bairro",
         onChange: this.onBairroChange
+      }), _react.default.createElement("br", null), this.props.isAcionamentos && _react.default.createElement("input", {
+        type: "checkbox",
+        onChange: function onChange(e) {
+          var eventoSelected = e.target.checked;
+
+          _this2.setState(function () {
+            return {
+              eventoSelected: eventoSelected
+            };
+          });
+        }
+      }), this.props.isAcionamentos && _react.default.createElement("select", {
+        onChange: this.onEstadoChange
+      }, _react.default.createElement("option", null, "Eventos"), _react.default.createElement("option", null, "Todos"), _react.default.createElement("option", null, "Panico"), _react.default.createElement("option", null, "Suspeita"), _react.default.createElement("option", null, "Ocorrencia")), this.props.isAcionamentos && _react.default.createElement("input", {
+        type: "checkbox",
+        onChange: function onChange(e) {
+          var portariaIDSelected = e.target.checked;
+
+          _this2.setState(function () {
+            return {
+              portariaIDSelected: portariaIDSelected
+            };
+          });
+        }
+      }), this.props.isAcionamentos && _react.default.createElement("input", {
+        className: "Filtro__text-input",
+        type: "text",
+        placeholder: "PortariaID",
+        onChange: this.onPortariaIDChange
       }), _react.default.createElement("br", null), _react.default.createElement("button", {
         className: "Filtro__button"
       }, "Buscar"), this.state.err && _react.default.createElement("p", null, this.state.err)));
@@ -31209,7 +31288,12 @@ function (_React$Component) {
 
 var _default = Filtro;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../styles/components/_filtro.scss":"styles/components/_filtro.scss"}],"components/AcionamentosPage.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../styles/components/_filtro.scss":"styles/components/_filtro.scss"}],"styles/components/_acionamentos-page.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/AcionamentosPage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31225,14 +31309,22 @@ var _reactRedux = require("react-redux");
 
 var _Filtro = _interopRequireDefault(require("./Filtro"));
 
+require("../styles/components/_acionamentos-page");
+
+var _Header = _interopRequireDefault(require("./Header"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AcionamentoPage = function AcionamentoPage(props) {
-  return _react.default.createElement("div", null, _react.default.createElement("p", null, "Acionamentos"), _react.default.createElement(_reactRouterDom.NavLink, {
+  return _react.default.createElement("div", {
+    className: "Acionamento-page"
+  }, _react.default.createElement(_Header.default, null), _react.default.createElement("h1", null, "Visualizar Acionamentos"), _react.default.createElement(_reactRouterDom.NavLink, {
+    className: "Acionamentos-page__navlink",
     to: "/dashboard",
     activeClassName: "is-active",
     exact: true
   }, "Voltar para a pagina inicial"), _react.default.createElement(_Filtro.default, {
+    isAcionamentos: true,
     onSubmit: function onSubmit(info) {
       console.log('A informação do filtro:', info);
     }
@@ -31249,7 +31341,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var _default = (0, _reactRedux.connect)(mapStateToProps)(AcionamentoPage);
 
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","react-redux":"../node_modules/react-redux/es/index.js","./Filtro":"components/Filtro.js"}],"styles/components/_portaria.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","react-redux":"../node_modules/react-redux/es/index.js","./Filtro":"components/Filtro.js","../styles/components/_acionamentos-page":"styles/components/_acionamentos-page.scss","./Header":"components/Header.js"}],"styles/components/_portaria.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -31583,7 +31675,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34773" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33019" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

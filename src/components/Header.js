@@ -18,7 +18,8 @@ const Header = (props) => (
                 <div className="header">
                 <NavLink className="Header__options" to='/acionamentos' activeClassName='is-active'>Visualizar Acionamentos</NavLink>
                 <NavLink className="Header__options" to='/portarias' activeClassName='is-actuve'>Visualizar Portarias</NavLink>
-                <button onClick={() => {
+                <button className='Header__button' 
+                onClick={() => {
                     props.dispatch(setAuthToken())
                     props.dispatch(setPortariaID())
                     localStorage.removeItem('portariaID')

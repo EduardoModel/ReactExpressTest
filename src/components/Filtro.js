@@ -12,13 +12,22 @@ class Filtro extends React.Component {
             cidade: '',
             bairroSelected: false,
             bairro: '',
+            eventoSelected: false,
+            evento: '',
+            portariaIDSelected: false,
+            portariaID: '',
             err: ''
         }
     }
 
     onEstadoChange = (e) => {
         const estado = e.target.value
-        this.setState(() => ({estado}))
+        if(estado !== 'Estado'){
+            this.setState(() => ({estado}))
+        }
+        else{
+            this.setState(() => ({estado : ''}))
+        }
     }
 
     onCidadeChange = (e) => {
@@ -29,6 +38,23 @@ class Filtro extends React.Component {
     onBairroChange = (e) => {
         const bairro = e.target.value
         this.setState(() => ({bairro}))
+    }
+
+    onEventoChange = (e) => {
+        const evento = e.target.value
+        if(evento !== 'Eventos'){
+            this.setState(() => ({evento}))
+        }
+    }
+
+    onPortariaIDChange = (e) => {
+        const portariaID = e.target.value
+        if(portariaID.length <= 3){
+            this.setState(() => ({portariaID}))
+        }
+        else{
+            this.setState(() => ({portariaID: ''}))
+        }
     }
 
     onFiltroSubmit = (e) => {
@@ -79,7 +105,7 @@ class Filtro extends React.Component {
 
                 <select className='Filtro__text-input' 
                 onChange={this.onEstadoChange}>
-                    <option></option>
+                    <option>Estado</option>
                     <option>SP</option>
                     <option>RS</option>
                 </select>
@@ -113,6 +139,44 @@ class Filtro extends React.Component {
 
                 <br/>
 
+                {this.props.isAcionamentos && 
+                <input type='checkbox'
+                onChange={(e) => {
+                    const eventoSelected = e.target.checked
+                    this.setState(() => ({eventoSelected}))
+                }}>
+                </input>
+                }
+
+                {this.props.isAcionamentos && 
+                <select 
+                onChange={this.onEstadoChange}>
+                    <option>Eventos</option>
+                    <option>Todos</option>
+                    <option>Panico</option>
+                    <option>Suspeita</option>
+                    <option>Ocorrencia</option>
+                </select>
+                }
+
+                {this.props.isAcionamentos && 
+                <input type='checkbox'
+                onChange={(e) => {
+                    const portariaIDSelected = e.target.checked
+                    this.setState(() => ({portariaIDSelected}))
+                }}>
+                </input>
+                }
+                
+                {this.props.isAcionamentos &&
+                <input className='Filtro__text-input' 
+                type='text'
+                placeholder='PortariaID'
+                onChange={this.onPortariaIDChange}>
+                </input>
+                }
+
+                <br/>
                 <button
                 className='Filtro__button'
                 >
