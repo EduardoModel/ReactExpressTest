@@ -60,7 +60,7 @@ class Filtro extends React.Component {
     onFiltroSubmit = (e) => {
         e.preventDefault()
         let err = '';
-        if(!this.state.estadoSelected && !this.state.cidadeSelected && !this.state.bairroSelected){
+        if(!this.state.estadoSelected && !this.state.cidadeSelected && !this.state.bairroSelected && !this.state.portariaIDSelected){
             err += 'Por favor selecione uma das opções para a busca!' + '\n'
         }
         if(this.state.estadoSelected && !this.state.estado){
@@ -71,6 +71,9 @@ class Filtro extends React.Component {
         }
         if(this.state.bairroSelected && !this.state.bairro){
             err += 'Por favor entre com um nome de um bairro\n'
+        }
+        if(this.state.portariaIDSelected && !this.state.portariaID){
+            err += 'Por favor entre com a portariaID\n'
         }
         this.setState(() => ({err}))
         this.sendUp(err)
@@ -87,6 +90,9 @@ class Filtro extends React.Component {
             }
             if(this.state.bairroSelected){
                 info = {...info, bairro: this.state.bairro}
+            }
+            if(this.state.portariaIDSelected){
+                info = {...info, portariaID: this.state.portariaID}
             }
             this.props.onSubmit(info)
         }
@@ -161,6 +167,7 @@ class Filtro extends React.Component {
 
                 {this.props.isAcionamentos && 
                 <input type='checkbox'
+                className='Filtro__checkbox'
                 onChange={(e) => {
                     const portariaIDSelected = e.target.checked
                     this.setState(() => ({portariaIDSelected}))
