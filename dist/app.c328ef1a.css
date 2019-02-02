@@ -176,7 +176,13 @@
 .Acionamento__p {
   display: inline;
   margin-right: 10rem;
-}.Portaria__p-id {
+}.Portaria {
+  background-color: lightblue;
+  margin-right: 10rem;
+  padding-left: 0.7rem;
+}
+
+.Portaria__p-id {
   display: inline-block;
   vertical-align: top;
 }
@@ -199,6 +205,9 @@
 .Portaria-page__lista {
   display: inline-block;
   vertical-align: top;
+  background-color: lightblue;
+  margin-bottom: 0.7rem;
+  margin-top: 1.6rem;
 }
 
 .Portaria-page__navlink {
@@ -210,16 +219,18 @@
 .Portaria-page__p-ID {
   display: inline-block;
   vertical-align: top;
+  margin-left: 0.6rem;
 }
 
 .Portaria-page__p-cidade {
   display: inline-block;
   vertical-align: top;
-  margin-left: 3.7rem;
+  margin-left: 4.8rem;
 }
 
 .Portaria-page__p-endereco {
   display: inline-block;
   vertical-align: top;
-  margin-left: 13.55rem;
+  margin-left: 14.5rem;
+  margin-right: 0.7rem;
 }

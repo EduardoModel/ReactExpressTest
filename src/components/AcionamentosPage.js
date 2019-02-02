@@ -11,7 +11,7 @@ class AcionamentosPage extends React.Component{
         super(props)
 
         this.state = {
-            acionamentos: null
+            acionamentos: []
         }
     }
 

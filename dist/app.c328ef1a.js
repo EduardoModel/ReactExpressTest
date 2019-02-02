@@ -36873,7 +36873,7 @@ function (_React$Component) {
     };
 
     _this.state = {
-      acionamentos: null
+      acionamentos: []
     };
     return _this;
   }
@@ -36934,21 +36934,27 @@ var _react = _interopRequireDefault(require("react"));
 
 require("../styles/components/_portaria.scss");
 
+var _reactCollapsible = _interopRequireDefault(require("react-collapsible"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Portaria = function Portaria(props) {
-  return _react.default.createElement("div", null, _react.default.createElement("p", {
-    className: "Portaria__p-id"
-  }, props.portaria.portariaID), _react.default.createElement("p", {
-    className: "Portaria__p-cidade"
-  }, props.portaria.cidade, ", ", props.portaria.estado), _react.default.createElement("p", {
-    className: "Portaria__p-endereco"
-  }, props.portaria.rua, " ", props.portaria.numero, ", ", props.portaria.bairro));
+  return _react.default.createElement(_reactCollapsible.default, {
+    trigger: _react.default.createElement("div", {
+      className: "Portaria"
+    }, _react.default.createElement("p", {
+      className: "Portaria__p-id"
+    }, props.portaria.portariaID), _react.default.createElement("p", {
+      className: "Portaria__p-cidade"
+    }, props.portaria.cidade, ", ", props.portaria.estado), _react.default.createElement("p", {
+      className: "Portaria__p-endereco"
+    }, props.portaria.rua, " ", props.portaria.numero, ", ", props.portaria.bairro))
+  }, _react.default.createElement("p", null, "Telefone: ", props.portaria.telefone));
 };
 
 var _default = Portaria;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../styles/components/_portaria.scss":"styles/components/_portaria.scss"}],"styles/components/_portaria-page.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../styles/components/_portaria.scss":"styles/components/_portaria.scss","react-collapsible":"../node_modules/react-collapsible/dist/Collapsible.js"}],"styles/components/_portaria-page.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -37251,7 +37257,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33163" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41273" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
