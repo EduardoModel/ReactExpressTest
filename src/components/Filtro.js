@@ -46,6 +46,9 @@ class Filtro extends React.Component {
         if(evento !== 'Eventos'){
             this.setState(() => ({evento}))
         }
+        else{
+            this.setState(() => ({evento: ''}))
+        }
     }
 
     onPortariaIDChange = (e) => {
@@ -84,7 +87,7 @@ class Filtro extends React.Component {
         if(err === ''){
             let info = {}
             if(this.state.estadoSelected){
-                info = {...info, estado: titleize(this.state.estado.toLowerCase())}
+                info = {...info, estado: this.state.estado}
             }
             if(this.state.cidadeSelected){
                 info = {...info, cidade: titleize(this.state.cidade.toLowerCase())}
@@ -94,6 +97,9 @@ class Filtro extends React.Component {
             }
             if(this.state.portariaIDSelected){
                 info = {...info, portariaID: this.state.portariaID}
+            }
+            if(this.state.eventoSelected){
+                info = {...info, evento: this.state.evento}
             }
             this.props.onSubmit(info)
         }
@@ -157,12 +163,11 @@ class Filtro extends React.Component {
 
                 {this.props.isAcionamentos && 
                 <select 
-                onChange={this.onEstadoChange}>
+                onChange={this.onEventoChange}>
                     <option>Eventos</option>
-                    <option>Todos</option>
-                    <option>Panico</option>
+                    <option>Pânico</option>
                     <option>Suspeita</option>
-                    <option>Ocorrencia</option>
+                    <option>Ocorrência</option>
                 </select>
                 }
 

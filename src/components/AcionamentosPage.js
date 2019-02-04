@@ -11,11 +11,18 @@ class AcionamentosPage extends React.Component{
         super(props)
 
         this.state = {
-            acionamentos: []
+            acionamentos: [],
+            evento: null
         }
     }
 
     buscaAcionamentos = (info) => {
+        if(info.evento !== ''){
+            this.setState(() => ({evento: info.evento}))
+        }
+        else{
+            this.setState(() => ({evento:null}))
+        }
         fetch('https://peaceful-shelf-58074.herokuapp.com/acionamentos', {
             method: 'POST',
             headers: {
@@ -50,7 +57,7 @@ class AcionamentosPage extends React.Component{
                     onSubmit={(info) => this.buscaAcionamentos(info)}
                 />
                 {this.state.acionamentos && this.state.acionamentos.map((acionamento) => {
-                        return <Acionamento key={parseInt(acionamento.portariaID)} acionamento={acionamento}/>
+                        return <Acionamento key={parseInt(acionamento.portariaID)} acionamento={acionamento} evento={this.state.evento}/>
                     })
                 }
             </div>

@@ -31592,6 +31592,12 @@ function (_React$Component) {
             evento: evento
           };
         });
+      } else {
+        _this.setState(function () {
+          return {
+            evento: ''
+          };
+        });
       }
     };
 
@@ -31652,7 +31658,7 @@ function (_React$Component) {
 
         if (_this.state.estadoSelected) {
           info = _extends({}, info, {
-            estado: (0, _titleize.default)(_this.state.estado.toLowerCase())
+            estado: _this.state.estado
           });
         }
 
@@ -31671,6 +31677,12 @@ function (_React$Component) {
         if (_this.state.portariaIDSelected) {
           info = _extends({}, info, {
             portariaID: _this.state.portariaID
+          });
+        }
+
+        if (_this.state.eventoSelected) {
+          info = _extends({}, info, {
+            evento: _this.state.evento
           });
         }
 
@@ -31759,8 +31771,8 @@ function (_React$Component) {
           });
         }
       }), this.props.isAcionamentos && _react.default.createElement("select", {
-        onChange: this.onEstadoChange
-      }, _react.default.createElement("option", null, "Eventos"), _react.default.createElement("option", null, "Todos"), _react.default.createElement("option", null, "Panico"), _react.default.createElement("option", null, "Suspeita"), _react.default.createElement("option", null, "Ocorrencia")), this.props.isAcionamentos && _react.default.createElement("input", {
+        onChange: this.onEventoChange
+      }, _react.default.createElement("option", null, "Eventos"), _react.default.createElement("option", null, "P\xE2nico"), _react.default.createElement("option", null, "Suspeita"), _react.default.createElement("option", null, "Ocorr\xEAncia")), this.props.isAcionamentos && _react.default.createElement("input", {
         type: "checkbox",
         className: "Filtro__checkbox",
         onChange: function onChange(e) {
@@ -36762,7 +36774,7 @@ var verificaDirecao = function verificaDirecao(dir) {
 };
 
 var Acionamento = function Acionamento(props) {
-  return _react.default.createElement("div", null, _react.default.createElement("h3", null, "PortariaID: ", props.acionamento.portariaID), _react.default.createElement("h3", null, "Total de acionamentos: ", props.acionamento.panico.length + props.acionamento.suspeita.length + props.acionamento.ocorrencia.length), _react.default.createElement(_reactCollapsible.default, {
+  return _react.default.createElement("div", null, _react.default.createElement("h3", null, "PortariaID: ", props.acionamento.portariaID), _react.default.createElement("h3", null, "Total de acionamentos: ", props.acionamento.panico.length + props.acionamento.suspeita.length + props.acionamento.ocorrencia.length), (!props.evento || props.evento === 'Pânico') && _react.default.createElement(_reactCollapsible.default, {
     trigger: "Pânico Total: " + props.acionamento.panico.length
   }, props.acionamento.panico.map(function (panico) {
     return _react.default.createElement("div", {
@@ -36772,7 +36784,7 @@ var Acionamento = function Acionamento(props) {
     }, "Hora: ", (0, _moment.default)(panico.createdAt).utcOffset(-3).format('HH:mm:ss')), _react.default.createElement("p", {
       className: "Acionamento__p"
     }, "Data: ", (0, _moment.default)(panico.createdAt).utcOffset(-3).format('DD/MM/YYYY')));
-  })), _react.default.createElement(_reactCollapsible.default, {
+  })), (!props.evento || props.evento === 'Suspeita') && _react.default.createElement(_reactCollapsible.default, {
     trigger: 'Suspeita Total: ' + props.acionamento.suspeita.length
   }, props.acionamento.suspeita.map(function (suspeita) {
     return _react.default.createElement("div", {
@@ -36784,7 +36796,7 @@ var Acionamento = function Acionamento(props) {
     }, "Data: ", (0, _moment.default)(suspeita.createdAt).utcOffset(-3).format('DD/MM/YYYY')), _react.default.createElement("p", null, "Dire\xE7\xE3o: ", verificaDirecao(suspeita.direcao)), _react.default.createElement("p", {
       className: "Acionamento__p"
     }, "Forma de locomo\xE7\xE3o: ", verificaLocomocao(suspeita.ameaca)));
-  })), _react.default.createElement(_reactCollapsible.default, {
+  })), (!props.evento || props.evento === 'Ocorrência') && _react.default.createElement(_reactCollapsible.default, {
     trigger: 'Ocorrência       Total: ' + props.acionamento.ocorrencia.length
   }, props.acionamento.ocorrencia.map(function (ocorrencia) {
     return _react.default.createElement("div", {
@@ -36856,6 +36868,20 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AcionamentosPage).call(this, props));
 
     _this.buscaAcionamentos = function (info) {
+      if (info.evento !== '') {
+        _this.setState(function () {
+          return {
+            evento: info.evento
+          };
+        });
+      } else {
+        _this.setState(function () {
+          return {
+            evento: null
+          };
+        });
+      }
+
       fetch('https://peaceful-shelf-58074.herokuapp.com/acionamentos', {
         method: 'POST',
         headers: {
@@ -36887,7 +36913,8 @@ function (_React$Component) {
     };
 
     _this.state = {
-      acionamentos: []
+      acionamentos: [],
+      evento: null
     };
     return _this;
   }
@@ -36912,7 +36939,8 @@ function (_React$Component) {
       }), this.state.acionamentos && this.state.acionamentos.map(function (acionamento) {
         return _react.default.createElement(_Acionamento.default, {
           key: parseInt(acionamento.portariaID),
-          acionamento: acionamento
+          acionamento: acionamento,
+          evento: _this2.state.evento
         });
       }));
     }
@@ -37271,7 +37299,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40443" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35147" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
