@@ -31485,7 +31485,19 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Filtro.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/titleize/index.js":[function(require,module,exports) {
+'use strict';
+
+module.exports = function (str) {
+  if (typeof str !== 'string') {
+    throw new TypeError('Expected a string');
+  }
+
+  return str.toLowerCase().replace(/(?:^|\s|-)\S/g, function (m) {
+    return m.toUpperCase();
+  });
+};
+},{}],"components/Filtro.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31496,6 +31508,8 @@ exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 require("../styles/components/_filtro.scss");
+
+var _titleize = _interopRequireDefault(require("titleize"));
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -31638,19 +31652,19 @@ function (_React$Component) {
 
         if (_this.state.estadoSelected) {
           info = _extends({}, info, {
-            estado: _this.state.estado
+            estado: (0, _titleize.default)(_this.state.estado.toLowerCase())
           });
         }
 
         if (_this.state.cidadeSelected) {
           info = _extends({}, info, {
-            cidade: _this.state.cidade
+            cidade: (0, _titleize.default)(_this.state.cidade.toLowerCase())
           });
         }
 
         if (_this.state.bairroSelected) {
           info = _extends({}, info, {
-            bairro: _this.state.bairro
+            bairro: (0, _titleize.default)(_this.state.bairro.toLowerCase())
           });
         }
 
@@ -31774,7 +31788,7 @@ function (_React$Component) {
 
 var _default = Filtro;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../styles/components/_filtro.scss":"styles/components/_filtro.scss"}],"styles/components/_acionamentos-page.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../styles/components/_filtro.scss":"styles/components/_filtro.scss","titleize":"../node_modules/titleize/index.js"}],"styles/components/_acionamentos-page.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -37257,7 +37271,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41273" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40443" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

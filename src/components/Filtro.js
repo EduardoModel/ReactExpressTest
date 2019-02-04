@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/components/_filtro.scss'
+import titleize from 'titleize'
 
 class Filtro extends React.Component {
     constructor(props){
@@ -83,13 +84,13 @@ class Filtro extends React.Component {
         if(err === ''){
             let info = {}
             if(this.state.estadoSelected){
-                info = {...info, estado: this.state.estado}
+                info = {...info, estado: titleize(this.state.estado.toLowerCase())}
             }
             if(this.state.cidadeSelected){
-                info = {...info, cidade: this.state.cidade}
+                info = {...info, cidade: titleize(this.state.cidade.toLowerCase())}
             }
             if(this.state.bairroSelected){
-                info = {...info, bairro: this.state.bairro}
+                info = {...info, bairro: titleize(this.state.bairro.toLowerCase())}
             }
             if(this.state.portariaIDSelected){
                 info = {...info, portariaID: this.state.portariaID}

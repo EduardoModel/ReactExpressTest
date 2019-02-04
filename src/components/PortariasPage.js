@@ -5,7 +5,7 @@ import Filtro from './Filtro';
 import Portaria from './Portaria';
 import '../styles/components/_portaria-page.scss'
 import Header from './Header'
- 
+
 class PortariaPage extends React.Component{
 
 
