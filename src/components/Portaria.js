@@ -9,7 +9,7 @@ const Portaria = (props) => (
     <p className='Portaria__p-cidade'>{props.portaria.cidade}, {props.portaria.estado}</p>
     <p className='Portaria__p-endereco'>{props.portaria.rua} {props.portaria.numero}, {props.portaria.bairro}</p>
     </div>}>
-        <p>Telefone: {props.portaria.telefone}</p>
+        <p className='Portaria__p-telefone'>Telefone: {props.portaria.telefone}</p>
     </Collapsible>
     
 )

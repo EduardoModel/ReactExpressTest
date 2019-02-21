@@ -52,7 +52,7 @@ class Filtro extends React.Component {
     }
 
     onPortariaIDChange = (e) => {
-        const portariaID = e.target.value
+        const portariaID = e.target.value.toString()
         if(portariaID.length <= 3){
             this.setState(() => ({portariaID}))
         }
@@ -183,7 +183,7 @@ class Filtro extends React.Component {
                 
                 {this.props.isAcionamentos &&
                 <input className='Filtro__text-input' 
-                type='text'
+                type='number'
                 placeholder='PortariaID'
                 onChange={this.onPortariaIDChange}>
                 </input>

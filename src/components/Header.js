@@ -16,8 +16,9 @@ const Header = (props) => (
             {!props.authToken && <NavLink className="Header__options" to='/' activeClassName="is-active">Login</NavLink>}
             {props.authToken && 
                 <div className="header">
-                <NavLink className="Header__options" to='/acionamentos' activeClassName='is-active'>Visualizar Acionamentos</NavLink>
-                <NavLink className="Header__options" to='/portarias' activeClassName='is-actuve'>Visualizar Portarias</NavLink>
+                <NavLink className="Header__options" to='/acionamentos' activeClassName='is-active'>Acionamentos</NavLink>
+                <NavLink className="Header__options" to='/portarias' activeClassName='is-active'>Portarias</NavLink>
+                <NavLink className="Header__options" to='/cadastroportaria' activeClassName='is-active'>Cadastro Portaria</NavLink>
                 <button className='Header__button' 
                 onClick={() => {
                     props.dispatch(setAuthToken())

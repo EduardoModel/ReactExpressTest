@@ -31193,11 +31193,15 @@ var Header = function Header(props) {
     className: "Header__options",
     to: "/acionamentos",
     activeClassName: "is-active"
-  }, "Visualizar Acionamentos"), _react.default.createElement(_reactRouterDom.NavLink, {
+  }, "Acionamentos"), _react.default.createElement(_reactRouterDom.NavLink, {
     className: "Header__options",
     to: "/portarias",
-    activeClassName: "is-actuve"
-  }, "Visualizar Portarias"), _react.default.createElement("button", {
+    activeClassName: "is-active"
+  }, "Portarias"), _react.default.createElement(_reactRouterDom.NavLink, {
+    className: "Header__options",
+    to: "/cadastroportaria",
+    activeClassName: "is-active"
+  }, "Cadastro Portaria"), _react.default.createElement("button", {
     className: "Header__button",
     onClick: function onClick() {
       props.dispatch((0, _appActions.setAuthToken)());
@@ -31602,7 +31606,7 @@ function (_React$Component) {
     };
 
     _this.onPortariaIDChange = function (e) {
-      var portariaID = e.target.value;
+      var portariaID = e.target.value.toString();
 
       if (portariaID.length <= 3) {
         _this.setState(function () {
@@ -31786,7 +31790,7 @@ function (_React$Component) {
         }
       }), this.props.isAcionamentos && _react.default.createElement("input", {
         className: "Filtro__text-input",
-        type: "text",
+        type: "number",
         placeholder: "PortariaID",
         onChange: this.onPortariaIDChange
       }), _react.default.createElement("br", null), _react.default.createElement("button", {
@@ -36991,7 +36995,9 @@ var Portaria = function Portaria(props) {
     }, props.portaria.cidade, ", ", props.portaria.estado), _react.default.createElement("p", {
       className: "Portaria__p-endereco"
     }, props.portaria.rua, " ", props.portaria.numero, ", ", props.portaria.bairro))
-  }, _react.default.createElement("p", null, "Telefone: ", props.portaria.telefone));
+  }, _react.default.createElement("p", {
+    className: "Portaria__p-telefone"
+  }, "Telefone: ", props.portaria.telefone));
 };
 
 var _default = Portaria;
@@ -37134,7 +37140,96 @@ var mapStateToProps = function mapStateToProps(state) {
 var _default = (0, _reactRedux.connect)(mapStateToProps)(PortariaPage);
 
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","react-redux":"../node_modules/react-redux/es/index.js","./Filtro":"components/Filtro.js","./Portaria":"components/Portaria.js","../styles/components/_portaria-page.scss":"styles/components/_portaria-page.scss","./Header":"components/Header.js"}],"routers/AppRouter.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","react-redux":"../node_modules/react-redux/es/index.js","./Filtro":"components/Filtro.js","./Portaria":"components/Portaria.js","../styles/components/_portaria-page.scss":"styles/components/_portaria-page.scss","./Header":"components/Header.js"}],"styles/components/_cadastro-page.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/CadastroPage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _reactRedux = require("react-redux");
+
+require("../styles/components/_cadastro-page");
+
+var _Header = _interopRequireDefault(require("./Header"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var CadastroPage =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(CadastroPage, _React$Component);
+
+  function CadastroPage(props) {
+    var _this;
+
+    _classCallCheck(this, CadastroPage);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CadastroPage).call(this, props));
+    _this.state = {
+      portariaID: '',
+      cidade: '',
+      estado: ''
+    };
+    return _this;
+  }
+
+  _createClass(CadastroPage, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", {
+        className: "Cadastro-page"
+      }, _react.default.createElement(_Header.default, null), _react.default.createElement("h1", null, "Cadastro de Portarias"), _react.default.createElement(_reactRouterDom.NavLink, {
+        className: "Cadastro-page__navlink",
+        to: "/dashboard",
+        activeClassName: "is-active",
+        exact: true
+      }, "Voltar para a pagina inicial"));
+    }
+  }]);
+
+  return CadastroPage;
+}(_react.default.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    portariaID: state.portariaID,
+    authToken: state.authToken
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(CadastroPage);
+
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","react-redux":"../node_modules/react-redux/es/index.js","../styles/components/_cadastro-page":"styles/components/_cadastro-page.scss","./Header":"components/Header.js"}],"routers/AppRouter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37156,7 +37251,9 @@ var _LoginPage = _interopRequireDefault(require("./../components/LoginPage"));
 
 var _AcionamentosPage = _interopRequireDefault(require("./../components/AcionamentosPage"));
 
-var _PortariasPage = _interopRequireDefault(require("../components/PortariasPage"));
+var _PortariasPage = _interopRequireDefault(require("./../components/PortariasPage"));
+
+var _CadastroPage = _interopRequireDefault(require("./../components/CadastroPage"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37178,13 +37275,16 @@ var AppRouter = function AppRouter(props) {
     path: "/portarias",
     component: _PortariasPage.default
   }), _react.default.createElement(_reactRouterDom.Route, {
+    path: "/cadastroportaria",
+    component: _CadastroPage.default
+  }), _react.default.createElement(_reactRouterDom.Route, {
     component: _NotFoundPage.default
   }))));
 };
 
 var _default = AppRouter;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./../components/DashboardPage":"components/DashboardPage.js","./../components/AboutPage":"components/AboutPage.js","./../components/NotFoundPage":"components/NotFoundPage.js","./../components/LoginPage":"components/LoginPage.js","./../components/AcionamentosPage":"components/AcionamentosPage.js","../components/PortariasPage":"components/PortariasPage.js"}],"reducers/reducer.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./../components/DashboardPage":"components/DashboardPage.js","./../components/AboutPage":"components/AboutPage.js","./../components/NotFoundPage":"components/NotFoundPage.js","./../components/LoginPage":"components/LoginPage.js","./../components/AcionamentosPage":"components/AcionamentosPage.js","./../components/PortariasPage":"components/PortariasPage.js","./../components/CadastroPage":"components/CadastroPage.js"}],"reducers/reducer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37299,7 +37399,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35147" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46247" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
