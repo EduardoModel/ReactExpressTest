@@ -37194,6 +37194,15 @@ function (_React$Component) {
     _classCallCheck(this, CadastroPage);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CadastroPage).call(this, props));
+
+    _this.onCadastroSubmit = function () {
+      console.log('vrauuu');
+    };
+
+    _this.addSubordinado = function (e) {
+      e.preventDefault();
+    };
+
     _this.state = {
       portariaID: '',
       cidade: '',
@@ -37212,7 +37221,29 @@ function (_React$Component) {
         to: "/dashboard",
         activeClassName: "is-active",
         exact: true
-      }, "Voltar para a pagina inicial"));
+      }, "Voltar para a pagina inicial"), _react.default.createElement("form", {
+        onSubmit: this.onCadastroSubmit
+      }, _react.default.createElement("input", {
+        type: "number",
+        placeholder: "PortariaID"
+      }), _react.default.createElement("select", null, _react.default.createElement("option", null, "Estado"), _react.default.createElement("option", null, "SP"), _react.default.createElement("option", null, "RS")), _react.default.createElement("input", {
+        type: "text",
+        placeholder: "Cidade"
+      }), _react.default.createElement("input", {
+        type: "text",
+        placeholder: "Bairro"
+      }), _react.default.createElement("input", {
+        type: "text",
+        placeholder: "Rua"
+      }), _react.default.createElement("input", {
+        type: "number",
+        placeholder: "N\xBA do pr\xE9dio"
+      }), _react.default.createElement("input", {
+        type: "text",
+        placeholder: "Telefone"
+      }), _react.default.createElement("p", null, "Subordinados"), _react.default.createElement("button", {
+        onClick: this.addSubordinado
+      }, "Novo subordinado")));
     }
   }]);
 
@@ -37399,7 +37430,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46247" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34537" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
