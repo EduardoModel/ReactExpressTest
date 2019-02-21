@@ -37163,6 +37163,8 @@ require("../styles/components/_cadastro-page");
 
 var _Header = _interopRequireDefault(require("./Header"));
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -37201,12 +37203,82 @@ function (_React$Component) {
 
     _this.addSubordinado = function (e) {
       e.preventDefault();
+
+      _this.setState({
+        subordinados: _this.state.subordinados.concat([{
+          portariaID: '',
+          posicao: ''
+        }])
+      });
+    };
+
+    _this.handleSubordinadoIDChange = function (idx) {
+      return function (e) {
+        console.log('vraauuu');
+
+        var novosSubordinados = _this.state.subordinados.map(function (subordinado, sidx) {
+          if (idx !== sidx) {
+            return subordinado;
+          }
+
+          return _extends({}, subordinado, {
+            portariaID: e.target.value
+          });
+        });
+
+        _this.setState(function () {
+          return {
+            subordinados: novosSubordinados
+          };
+        });
+      };
+    };
+
+    _this.handleRemoveSubordinado = function (idx) {
+      return function (e) {
+        _this.setState({
+          subordinados: _this.state.subordinados.filter(function (s, sidx) {
+            return idx !== sidx;
+          })
+        });
+      };
+    };
+
+    _this.onPosicaoChange = function (idx) {
+      return function (e) {
+        if (e.target.value === '') {
+          return;
+        }
+
+        var novosSubordinados = _this.state.subordinados.map(function (subordinado, sidx) {
+          if (idx !== sidx) {
+            return subordinado;
+          }
+
+          return _extends({}, subordinado, {
+            posicao: e.target.value
+          });
+        });
+
+        _this.setState(function () {
+          return {
+            subordinados: novosSubordinados
+          };
+        });
+      };
     };
 
     _this.state = {
       portariaID: '',
       cidade: '',
-      estado: ''
+      estado: '',
+      rua: '',
+      numero: '',
+      telefone: '',
+      subordinados: [{
+        portariaID: '',
+        posicao: ''
+      }]
     };
     return _this;
   }
@@ -37214,6 +37286,8 @@ function (_React$Component) {
   _createClass(CadastroPage, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return _react.default.createElement("div", {
         className: "Cadastro-page"
       }, _react.default.createElement(_Header.default, null), _react.default.createElement("h1", null, "Cadastro de Portarias"), _react.default.createElement(_reactRouterDom.NavLink, {
@@ -37241,7 +37315,22 @@ function (_React$Component) {
       }), _react.default.createElement("input", {
         type: "text",
         placeholder: "Telefone"
-      }), _react.default.createElement("p", null, "Subordinados"), _react.default.createElement("button", {
+      }), _react.default.createElement("p", null, "Subordinados"), this.state.subordinados.map(function (subordinado, idx) {
+        return _react.default.createElement("div", null, _react.default.createElement("input", {
+          type: "text",
+          placeholder: "".concat(subordinado.portariaID),
+          value: subordinado.portariaID,
+          onChange: _this2.handleSubordinadoIDChange(idx)
+        }), _react.default.createElement("select", {
+          onChange: _this2.onPosicaoChange(idx)
+        }, _react.default.createElement("option", null, "Posi\xE7\xE3o"), _react.default.createElement("option", {
+          value: "D"
+        }, "Direita"), _react.default.createElement("option", {
+          value: "E"
+        }, "Esquerda")), _react.default.createElement("button", {
+          onClick: _this2.handleRemoveSubordinado(idx)
+        }, "Remover"));
+      }), _react.default.createElement("button", {
         onClick: this.addSubordinado
       }, "Novo subordinado")));
     }
@@ -37430,7 +37519,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34537" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39691" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

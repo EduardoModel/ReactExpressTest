@@ -11,7 +11,11 @@ class CadastroPage extends React.Component{
         this.state = {
             portariaID: '',
             cidade: '',
-            estado: ''
+            estado: '',
+            rua: '',
+            numero: '',
+            telefone: '',
+            subordinados: [{portariaID: '', posicao: ''}]
         }
     }
 
@@ -21,7 +25,39 @@ class CadastroPage extends React.Component{
 
     addSubordinado = (e) => {
         e.preventDefault()
-        
+        this.setState({
+            subordinados: this.state.subordinados.concat([{portariaID: '', posicao: ''}])
+        })
+    }
+
+    handleSubordinadoIDChange = idx => e => {
+        console.log('vraauuu')
+        const novosSubordinados = this.state.subordinados.map((subordinado, sidx) => {
+            if(idx !== sidx){
+                return subordinado
+            }
+            return {...subordinado, portariaID: e.target.value}
+        })
+        this.setState(() => ({subordinados: novosSubordinados}))
+    }
+
+    handleRemoveSubordinado = idx => e => {
+        this.setState({
+            subordinados: this.state.subordinados.filter((s, sidx) => idx !== sidx)
+        })
+    }
+
+    onPosicaoChange = idx => e => {
+        if(e.target.value === ''){
+            return
+        }
+        const novosSubordinados = this.state.subordinados.map((subordinado, sidx) => {
+            if(idx !== sidx){
+                return subordinado
+            }
+            return {...subordinado, posicao: e.target.value}
+        })
+        this.setState(() => ({subordinados: novosSubordinados}))
     }
 
     render(){
@@ -74,10 +110,31 @@ class CadastroPage extends React.Component{
                     </input>
 
                     <p>Subordinados</p>
+                    {this.state.subordinados.map((subordinado, idx)=> {
+                        return (
+                            <div>
+                                <input
+                                type='text'
+                                placeholder={`${subordinado.portariaID}`}
+                                value={subordinado.portariaID}
+                                onChange={this.handleSubordinadoIDChange(idx)}
+                                >
+                                </input>
+
+                                <select
+                                onChange={this.onPosicaoChange(idx)}>
+                                    <option>Posição</option>
+                                    <option value='D'>Direita</option>
+                                    <option value='E'>Esquerda</option>
+                                </select>
+
+                                <button onClick={this.handleRemoveSubordinado(idx)}
+                                >Remover</button>
+                            </div>
+                        )
+                    })}
                     <button onClick={this.addSubordinado}
                     >Novo subordinado</button>
-
-
 
                 </form>            
             </div>
