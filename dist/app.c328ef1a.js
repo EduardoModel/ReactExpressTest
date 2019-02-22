@@ -37211,6 +37211,7 @@ function (_React$Component) {
 
         var portaria = {
           portariaID: _this.state.portariaID,
+          senha: _this.state.senha,
           estado: _this.state.estado,
           cidade: _this.state.cidade,
           bairro: _this.state.bairro,
@@ -37219,6 +37220,7 @@ function (_React$Component) {
           telefone: _this.state.telefone,
           subordinados: _this.state.subordinados
         };
+        console.log(JSON.stringify(portaria));
 
         _this.sendPortaria(portaria);
       }
@@ -37234,11 +37236,15 @@ function (_React$Component) {
         },
         body: JSON.stringify(portaria)
       }).then(function (response) {
-        if (response.status === 200) {
-          _this.setState({
-            err: 'Portaria Cadastrada com Sucesso!'
-          });
-        }
+        console.log(response.status);
+        console.log(response.statusText);
+        response.text().then(function (res) {
+          console.log(res);
+        }); // console.log(response.text())
+        // console.log(JSON.parse(response.text()))
+        // if(response.status === 200){
+        //     this.setState({err: 'Portaria Cadastrada com Sucesso!'})
+        // }
       }).catch(function (error) {
         console.log('Authorization failed : ' + error.message);
       });
@@ -37495,7 +37501,6 @@ function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    portariaID: state.portariaID,
     authToken: state.authToken
   };
 };
@@ -37673,7 +37678,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34161" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35991" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

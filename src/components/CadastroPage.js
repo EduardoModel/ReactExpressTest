@@ -32,6 +32,7 @@ class CadastroPage extends React.Component{
             this.setState({err: ''})
             const portaria = {
                 portariaID: this.state.portariaID,
+                senha: this.state.senha,
                 estado: this.state.estado,
                 cidade: this.state.cidade,
                 bairro: this.state.bairro,
@@ -40,6 +41,7 @@ class CadastroPage extends React.Component{
                 telefone: this.state.telefone,
                 subordinados: this.state.subordinados
             }
+            console.log(JSON.stringify(portaria))
             this.sendPortaria(portaria)
         }
     }
@@ -54,9 +56,16 @@ class CadastroPage extends React.Component{
         },
             body: JSON.stringify(portaria)
         }).then((response) => {
-            if(response.status === 200){
-                this.setState({err: 'Portaria Cadastrada com Sucesso!'})
-            }
+            console.log(response.status)
+            console.log(response.statusText)
+            response.text().then((res) => {
+                console.log(res)
+            })
+            // console.log(response.text())
+            // console.log(JSON.parse(response.text()))
+            // if(response.status === 200){
+            //     this.setState({err: 'Portaria Cadastrada com Sucesso!'})
+            // }
         })
         .catch(error => {
             console.log('Authorization failed : ' + error.message)
@@ -265,7 +274,6 @@ class CadastroPage extends React.Component{
 
 const mapStateToProps = state => {
     return{
-        portariaID: state.portariaID,
         authToken: state.authToken
     }
 }
