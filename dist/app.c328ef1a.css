@@ -251,21 +251,26 @@
   font-size: 1.2rem;
   color: black;
   text-decoration: none;
+  margin-bottom: 1rem;
 }
 
-.Cadastro-page__p-ID {
-  display: inline-block;
-  vertical-align: top;
+.Cadastro-page__p {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
 }
 
-.Cadastro-page__p-cidade {
-  display: inline-block;
-  vertical-align: top;
-  margin-left: 3.7rem;
+.Cadastro-page__input {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
 }
 
-.Cadastro-page__p-endereco {
-  display: inline-block;
+.Cadastro-page__novoSubordinadoButton {
+  font-size: 1rem;
+  margin-top: 0.01rem;
+}
+
+.Cadastro-page__enviarButton {
+  margin-top: 1rem;
+  font-size: 1rem;
   vertical-align: top;
-  margin-left: 13.55rem;
 }

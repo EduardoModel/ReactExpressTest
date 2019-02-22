@@ -37197,8 +37197,51 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CadastroPage).call(this, props));
 
-    _this.onCadastroSubmit = function () {
-      console.log('vrauuu');
+    _this.onCadastroSubmit = function (e) {
+      e.preventDefault();
+
+      if (_this.state.portariaID === '' || _this.state.senha === '' || _this.state.estado === '' || _this.state.cidade === '' || _this.state.bairro === '' || _this.state.numero === '' || _this.state.telefone === '') {
+        _this.setState({
+          err: 'Está faltando preencher campos obrigatórios!!!'
+        });
+      } else {
+        _this.setState({
+          err: ''
+        });
+
+        var portaria = {
+          portariaID: _this.state.portariaID,
+          estado: _this.state.estado,
+          cidade: _this.state.cidade,
+          bairro: _this.state.bairro,
+          rua: _this.state.rua,
+          numero: _this.state.numero,
+          telefone: _this.state.telefone,
+          subordinados: _this.state.subordinados
+        };
+
+        _this.sendPortaria(portaria);
+      }
+    };
+
+    _this.sendPortaria = function (portaria) {
+      fetch('https://peaceful-shelf-58074.herokuapp.com/portaria', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+          'x-auth': _this.props.authToken
+        },
+        body: JSON.stringify(portaria)
+      }).then(function (response) {
+        if (response.status === 200) {
+          _this.setState({
+            err: 'Portaria Cadastrada com Sucesso!'
+          });
+        }
+      }).catch(function (error) {
+        console.log('Authorization failed : ' + error.message);
+      });
     };
 
     _this.addSubordinado = function (e) {
@@ -37212,10 +37255,76 @@ function (_React$Component) {
       });
     };
 
+    _this.onPortariaIDChange = function (e) {
+      var portariaID = e.target.value.toString();
+
+      if (portariaID.length <= 3) {
+        _this.setState(function () {
+          return {
+            portariaID: portariaID
+          };
+        });
+      }
+    };
+
+    _this.onSenhaChange = function (e) {
+      var senha = e.target.value;
+
+      _this.setState({
+        senha: senha
+      });
+    };
+
+    _this.onEstadoChange = function (e) {
+      var estado = e.target.value;
+
+      _this.setState({
+        estado: estado
+      });
+    };
+
+    _this.onCidadeChange = function (e) {
+      var cidade = e.target.value;
+
+      _this.setState({
+        cidade: cidade
+      });
+    };
+
+    _this.onBairroChange = function (e) {
+      var bairro = e.target.value;
+
+      _this.setState({
+        bairro: bairro
+      });
+    };
+
+    _this.onRuaChange = function (e) {
+      var rua = e.target.value;
+
+      _this.setState({
+        rua: rua
+      });
+    };
+
+    _this.onNumeroPredioChange = function (e) {
+      var numero = e.target.value.toString();
+
+      _this.setState({
+        numero: numero
+      });
+    };
+
+    _this.onTelefoneChange = function (e) {
+      var telefone = e.target.value;
+
+      _this.setState({
+        telefone: telefone
+      });
+    };
+
     _this.handleSubordinadoIDChange = function (idx) {
       return function (e) {
-        console.log('vraauuu');
-
         var novosSubordinados = _this.state.subordinados.map(function (subordinado, sidx) {
           if (idx !== sidx) {
             return subordinado;
@@ -37270,15 +37379,18 @@ function (_React$Component) {
 
     _this.state = {
       portariaID: '',
-      cidade: '',
+      senha: '',
       estado: '',
+      cidade: '',
+      bairro: '',
       rua: '',
       numero: '',
       telefone: '',
       subordinados: [{
         portariaID: '',
         posicao: ''
-      }]
+      }],
+      err: ''
     };
     return _this;
   }
@@ -37295,33 +37407,71 @@ function (_React$Component) {
         to: "/dashboard",
         activeClassName: "is-active",
         exact: true
-      }, "Voltar para a pagina inicial"), _react.default.createElement("form", {
-        onSubmit: this.onCadastroSubmit
-      }, _react.default.createElement("input", {
+      }, "Voltar para a pagina inicial"), _react.default.createElement("form", null, _react.default.createElement("p", {
+        className: "Cadastro-page__p"
+      }, "PortariaID"), _react.default.createElement("input", {
         type: "number",
-        placeholder: "PortariaID"
-      }), _react.default.createElement("select", null, _react.default.createElement("option", null, "Estado"), _react.default.createElement("option", null, "SP"), _react.default.createElement("option", null, "RS")), _react.default.createElement("input", {
+        onChange: this.onPortariaIDChange,
+        placeholder: "PortariaID",
+        className: "Cadastro-page__input"
+      }), _react.default.createElement("p", {
+        className: "Cadastro-page__p"
+      }, "Senha"), _react.default.createElement("input", {
+        type: "password",
+        onChange: this.onSenhaChange,
+        placeholder: "Senha",
+        className: "Cadastro-page__input"
+      }), _react.default.createElement("p", {
+        className: "Cadastro-page__p"
+      }, "Estado"), _react.default.createElement("select", {
+        className: "Cadastro-page__input",
+        onChange: this.onEstadoChange
+      }, _react.default.createElement("option", null, "Estado"), _react.default.createElement("option", null, "SP"), _react.default.createElement("option", null, "RS")), _react.default.createElement("p", {
+        className: "Cadastro-page__p"
+      }, "Cidade"), _react.default.createElement("input", {
+        className: "Cadastro-page__input",
         type: "text",
-        placeholder: "Cidade"
-      }), _react.default.createElement("input", {
+        placeholder: "Cidade",
+        onChange: this.onCidadeChange
+      }), _react.default.createElement("p", {
+        className: "Cadastro-page__p"
+      }, "Bairro"), _react.default.createElement("input", {
         type: "text",
-        placeholder: "Bairro"
-      }), _react.default.createElement("input", {
+        placeholder: "Bairro",
+        onChange: this.onBairroChange,
+        className: "Cadastro-page__input"
+      }), _react.default.createElement("p", {
+        className: "Cadastro-page__p"
+      }, "Rua"), _react.default.createElement("input", {
         type: "text",
-        placeholder: "Rua"
-      }), _react.default.createElement("input", {
+        placeholder: "Rua",
+        onChange: this.onRuaChange,
+        className: "Cadastro-page__input"
+      }), _react.default.createElement("p", {
+        className: "Cadastro-page__p"
+      }, "N\xBA do Pr\xE9dio"), _react.default.createElement("input", {
         type: "number",
-        placeholder: "N\xBA do pr\xE9dio"
-      }), _react.default.createElement("input", {
+        placeholder: "N\xBA do pr\xE9dio",
+        onChange: this.onNumeroPredioChange,
+        className: "Cadastro-page__input"
+      }), _react.default.createElement("p", {
+        className: "Cadastro-page__p"
+      }, "N\xBA de Telefone"), _react.default.createElement("input", {
         type: "text",
-        placeholder: "Telefone"
-      }), _react.default.createElement("p", null, "Subordinados"), this.state.subordinados.map(function (subordinado, idx) {
+        placeholder: "Telefone",
+        onChange: this.onTelefoneChange,
+        className: "Cadastro-page__input"
+      }), _react.default.createElement("p", {
+        className: "Cadastro-page__p"
+      }, "Subordinados"), this.state.subordinados.map(function (subordinado, idx) {
         return _react.default.createElement("div", null, _react.default.createElement("input", {
           type: "text",
-          placeholder: "".concat(subordinado.portariaID),
+          placeholder: "PortariaID",
           value: subordinado.portariaID,
-          onChange: _this2.handleSubordinadoIDChange(idx)
+          onChange: _this2.handleSubordinadoIDChange(idx),
+          className: "Cadastro-page__input"
         }), _react.default.createElement("select", {
+          className: "Cadastro-page__input",
           onChange: _this2.onPosicaoChange(idx)
         }, _react.default.createElement("option", null, "Posi\xE7\xE3o"), _react.default.createElement("option", {
           value: "D"
@@ -37331,8 +37481,12 @@ function (_React$Component) {
           onClick: _this2.handleRemoveSubordinado(idx)
         }, "Remover"));
       }), _react.default.createElement("button", {
+        className: "Cadastro-page__novoSubordinadoButton",
         onClick: this.addSubordinado
-      }, "Novo subordinado")));
+      }, "Novo subordinado"), _react.default.createElement("br", null), _react.default.createElement("button", {
+        onClick: this.onCadastroSubmit,
+        className: "Cadastro-page__enviarButton"
+      }, "Enviar"), this.state.err && _react.default.createElement("p", null, this.state.err)));
     }
   }]);
 
@@ -37519,7 +37673,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39691" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34161" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
