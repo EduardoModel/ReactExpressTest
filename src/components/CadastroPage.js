@@ -18,7 +18,8 @@ class CadastroPage extends React.Component{
             numero: '',
             telefone: '',
             subordinados: [{portariaID: '', posicao: ''}],
-            err: ''
+            err: '',
+            mensagemSucesso: ''
         }
     }
 
@@ -30,6 +31,7 @@ class CadastroPage extends React.Component{
         }
         else{
             this.setState({err: ''})
+
             const portaria = {
                 portariaID: this.state.portariaID,
                 senha: this.state.senha,
@@ -39,7 +41,7 @@ class CadastroPage extends React.Component{
                 rua: this.state.rua,
                 numero: this.state.numero,
                 telefone: this.state.telefone,
-                subordinados: this.state.subordinados
+                subordinados: this.state.subordinados[0].portariaID === '' ? [] : this.state.subordinados
             }
             console.log(JSON.stringify(portaria))
             this.sendPortaria(portaria)
@@ -57,8 +59,8 @@ class CadastroPage extends React.Component{
             body: JSON.stringify(portaria)
         }).then((response) => {
             if(response.status === 200){
-                alert('Portaria cadastrada com sucesso!!!')
                 this.setState({
+                    mensagemSucesso: 'Portaria cadastrada com sucesso!!!',
                     portariaID: '',
                     senha: '',
                     estado: '',
@@ -161,6 +163,9 @@ class CadastroPage extends React.Component{
                 <Header />
                 <h1>Cadastro de Portarias</h1>
                 <NavLink className='Cadastro-page__navlink' to='/dashboard' activeClassName="is-active" exact={true}>Voltar para a pagina inicial</NavLink>
+                {this.state.mensagemSucesso && 
+                    <p>{this.state.mensagemSucesso}</p>
+                }
                 <form>
                     <p className='Cadastro-page__p'>PortariaID</p>
                     <input

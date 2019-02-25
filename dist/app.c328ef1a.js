@@ -37218,7 +37218,7 @@ function (_React$Component) {
           rua: _this.state.rua,
           numero: _this.state.numero,
           telefone: _this.state.telefone,
-          subordinados: _this.state.subordinados
+          subordinados: _this.state.subordinados[0].portariaID === '' ? [] : _this.state.subordinados
         };
         console.log(JSON.stringify(portaria));
 
@@ -37237,9 +37237,8 @@ function (_React$Component) {
         body: JSON.stringify(portaria)
       }).then(function (response) {
         if (response.status === 200) {
-          alert('Portaria cadastrada com sucesso!!!');
-
           _this.setState({
+            mensagemSucesso: 'Portaria cadastrada com sucesso!!!',
             portariaID: '',
             senha: '',
             estado: '',
@@ -37406,7 +37405,8 @@ function (_React$Component) {
         portariaID: '',
         posicao: ''
       }],
-      err: ''
+      err: '',
+      mensagemSucesso: ''
     };
     return _this;
   }
@@ -37423,7 +37423,7 @@ function (_React$Component) {
         to: "/dashboard",
         activeClassName: "is-active",
         exact: true
-      }, "Voltar para a pagina inicial"), _react.default.createElement("form", null, _react.default.createElement("p", {
+      }, "Voltar para a pagina inicial"), this.state.mensagemSucesso && _react.default.createElement("p", null, this.state.mensagemSucesso), _react.default.createElement("form", null, _react.default.createElement("p", {
         className: "Cadastro-page__p"
       }, "PortariaID"), _react.default.createElement("input", {
         type: "number",
@@ -37688,7 +37688,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42089" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42997" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
