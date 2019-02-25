@@ -37114,7 +37114,7 @@ function (_React$Component) {
         className: "Portaria-page__lista"
       }, _react.default.createElement("p", {
         className: "Portaria-page__p-ID"
-      }, _react.default.createElement("b", null, "PortariaID")), _react.default.createElement("p", {
+      }, _react.default.createElement("b", null, "ID")), _react.default.createElement("p", {
         className: "Portaria-page__p-cidade"
       }, _react.default.createElement("b", null, "Cidade")), _react.default.createElement("p", {
         className: "Portaria-page__p-endereco"
@@ -37236,15 +37236,25 @@ function (_React$Component) {
         },
         body: JSON.stringify(portaria)
       }).then(function (response) {
-        console.log(response.status);
-        console.log(response.statusText);
-        response.text().then(function (res) {
-          console.log(res);
-        }); // console.log(response.text())
-        // console.log(JSON.parse(response.text()))
-        // if(response.status === 200){
-        //     this.setState({err: 'Portaria Cadastrada com Sucesso!'})
-        // }
+        if (response.status === 200) {
+          alert('Portaria cadastrada com sucesso!!!');
+
+          _this.setState({
+            portariaID: '',
+            senha: '',
+            estado: '',
+            cidade: '',
+            bairro: '',
+            rua: '',
+            numero: '',
+            telefone: '',
+            subordinados: [{
+              portariaID: '',
+              posicao: ''
+            }],
+            err: ''
+          });
+        }
       }).catch(function (error) {
         console.log('Authorization failed : ' + error.message);
       });
@@ -37678,7 +37688,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35991" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42089" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

@@ -178,8 +178,7 @@
   margin-right: 10rem;
 }.Portaria {
   background-color: lightblue;
-  margin-right: 10rem;
-  padding-left: 0.7rem;
+  border-right: -3rem;
 }
 
 .Portaria__p-id {
@@ -190,13 +189,13 @@
 .Portaria__p-cidade {
   display: inline-block;
   vertical-align: top;
-  margin-left: 7rem;
+  margin-left: 3rem;
 }
 
 .Portaria__p-endereco {
   display: inline-block;
   vertical-align: top;
-  margin-left: 12rem;
+  margin-left: 4rem;
 }
 
 .Portaria__p-telefone {
@@ -229,14 +228,14 @@
 .Portaria-page__p-cidade {
   display: inline-block;
   vertical-align: top;
-  margin-left: 4.8rem;
+  margin-left: 3.6rem;
 }
 
 .Portaria-page__p-endereco {
   display: inline-block;
   vertical-align: top;
-  margin-left: 14.5rem;
-  margin-right: 0.7rem;
+  margin-left: 6.5rem;
+  margin-right: 33.5rem;
 }.Cadastro-page {
   margin-left: 220px;
   padding: 0px 10px;

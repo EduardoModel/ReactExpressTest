@@ -56,16 +56,21 @@ class CadastroPage extends React.Component{
         },
             body: JSON.stringify(portaria)
         }).then((response) => {
-            console.log(response.status)
-            console.log(response.statusText)
-            response.text().then((res) => {
-                console.log(res)
-            })
-            // console.log(response.text())
-            // console.log(JSON.parse(response.text()))
-            // if(response.status === 200){
-            //     this.setState({err: 'Portaria Cadastrada com Sucesso!'})
-            // }
+            if(response.status === 200){
+                alert('Portaria cadastrada com sucesso!!!')
+                this.setState({
+                    portariaID: '',
+                    senha: '',
+                    estado: '',
+                    cidade: '',
+                    bairro: '',
+                    rua: '',
+                    numero: '',
+                    telefone: '',
+                    subordinados: [{portariaID: '', posicao: ''}],
+                    err: ''
+                })
+            }
         })
         .catch(error => {
             console.log('Authorization failed : ' + error.message)

@@ -53,7 +53,7 @@ class PortariaPage extends React.Component{
                     {
                         this.state.portarias && 
                         <div className='Portaria-page__lista'>
-                        <p className='Portaria-page__p-ID'><b>PortariaID</b></p>
+                        <p className='Portaria-page__p-ID'><b>ID</b></p>
                         <p className='Portaria-page__p-cidade'><b>Cidade</b></p>
                         <p className='Portaria-page__p-endereco'><b>Endereço</b></p>
                         </div>

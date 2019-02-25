@@ -1,7 +1,7 @@
 .Portaria{
     background-color: lightblue;
-    margin-right: 10rem;
-    padding-left: 0.7rem;
+    border-right: -3rem;
+    
 }
 
 .Portaria__p-id{
@@ -12,13 +12,13 @@
 .Portaria__p-cidade{
     display: inline-block;
     vertical-align: top;
-    margin-left: 7rem;
+    margin-left: 3rem;
 }
 
 .Portaria__p-endereco{
     display: inline-block;
     vertical-align: top;
-    margin-left: 12rem;
+    margin-left: 4rem;
 }
 
 .Portaria__p-telefone{
